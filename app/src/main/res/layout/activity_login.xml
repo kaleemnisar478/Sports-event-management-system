@@ -34,9 +34,9 @@
             android:id="@+id/login_welcome_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ahang"
+            android:text="Sports Event Management System"
             android:textColor="@color/primaryColor"
-            android:textSize="41sp"
+            android:textSize="21sp"
             android:transitionName="s_text" />
 
 
