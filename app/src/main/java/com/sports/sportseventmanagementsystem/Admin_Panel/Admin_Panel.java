@@ -15,7 +15,7 @@ public class Admin_Panel extends AppCompatActivity {
 
 
         if(savedInstanceState==null) {   //this if will check on rotation as on rotaion item destroy and recreate but due to this save instance selected item remain same
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Admin_Election_Fragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Admin_Fragment()).commit();
         }
 
     }

@@ -18,7 +18,7 @@ import com.sports.sportseventmanagementsystem.Admin_Panel.CreateTournament.Tourn
 import com.sports.sportseventmanagementsystem.Login;
 import com.sports.sportseventmanagementsystem.R;
 
-public class Admin_Election_Fragment extends Fragment {
+public class Admin_Fragment extends Fragment {
 
 
     private MaterialCardView createElection,inProgress,results,settings,addGames;
@@ -26,7 +26,7 @@ public class Admin_Election_Fragment extends Fragment {
     private Bundle bundle;
     private DatabaseReference databaseReference;
 
-    public Admin_Election_Fragment() {
+    public Admin_Fragment() {
         // Required empty public constructor
     }
 
