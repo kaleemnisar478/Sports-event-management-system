@@ -1,3 +1,53 @@
 <resources>
     <string name="app_name">Sports event management system</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="login_screen_welcome">Hi there, Welcome back!</string>
+    <string name="login_Sign_in_to_continue">Sign in to continue</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="login_forgot_button">Forget Password?</string>
+    <string name="login_login_button">Log In</string>
+    <string name="login_sign_up_button">New User? SIGN UP</string>
+
+
+    //sign up
+    <string name="sign_up_welcome">Welcome,</string>
+    <string name="sign_up_to_start">Sign up to start new journey</string>
+    <string name="sign_up_full_name">Full Name</string>
+    <string name="sign_up_username">Username</string>
+    <string name="sign_up_email">Email</string>
+    <string name="sign_up_phone">Phone</string>
+    <string name="sign_up_pass">Password</string>
+    <string name="sign_up_sign_up_btn">Sign Up</string>
+    <string name="sign_up_already_account_btn">Already have an account? Login</string>
+
+
+    //forget password
+    <string name="forget_pass_forget_password">Forget Password</string>
+    <string name="forget_pass_provide_your_account">Provide your account\'s email for which you want to reset your password!</string>
+    <string name="forget_pass_email">Email</string>
+    <string name="forget_pass_next">Next</string>
+    <string name="forget_pass_back_to_login">Back to Log in</string>
+    <string name="forget_pass_make_selection">Make Selection</string>
+    <string name="forget_pass_select_contact_details">Select which contact detail should be used to reset your password?</string>
+    <string name="forget_pass_via_sms">VIA SMS</string>
+    <string name="forget_pass_number">+92333*******</string>
+    <string name="forget_pass_via_email">VIA MAIL</string>
+    <string name="forget_pass_mail">support.ahung@gmail.com</string>
+    <string name="forget_pass_password_updated">Password Updated</string>
+    <string name="forget_pass_your_pass_updated">Your password has been updated!</string>
+    <string name="forget_pass_login">Log in</string>
+
+    //forget password new password
+    <string name="forget_pass_new_credentials">New Credentials</string>
+    <string name="forget_pass_your_identity_verified">Your identity has been verified. Set your new password</string>
+    <string name="forget_pass_new_pass">New Password</string>
+    <string name="forget_pass_confirm_pass">Confirm Password</string>
+    <string name="forget_pass_ok_btn">OK</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

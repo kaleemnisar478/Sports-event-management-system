@@ -25,6 +25,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.sports.sportseventmanagementsystem.Admin_Panel.Admin_Panel;
+import com.sports.sportseventmanagementsystem.User_Panel.User_Panel;
 
 public class Login extends AppCompatActivity {
     Button signup,login;
@@ -64,7 +66,7 @@ public class Login extends AppCompatActivity {
 //            @Override
 //            public void onClick(View v) {
 //                Intent intent = new Intent(getApplicationContext(), HomeAdmin.class);
-//                intent.putExtra("username","sonaina");
+//                intent.putExtra("username","kaleem");
 //                intent.putExtra("type", "AppUser");
 //                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 //                startActivity(intent);
@@ -145,9 +147,8 @@ public class Login extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent=new Intent(Login.this,SignUp.class);
-//
-//               startActivity(intent);
+                Intent intent=new Intent(Login.this,SignUp.class);
+                startActivity(intent);
 
             }
         });
@@ -211,7 +212,7 @@ public class Login extends AppCompatActivity {
         type="";
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
 
-        if(userType==R.id.user)
+        if(userType==R.id.user || userType==R.id.teacher)
         {   reference = rootNode.getReference("Users").child("AppUsers");
             type="AppUsers";
         }
@@ -243,19 +244,19 @@ public class Login extends AppCompatActivity {
 
                         password.setErrorEnabled(false);
                         if(type=="Admins") {
-//                            Intent intent = new Intent(getApplicationContext(), HomeAdmin.class);
-//                            intent.putExtra("username", userEnteredUsername);
-//                            intent.putExtra("type", type);
-//                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                            startActivity(intent);
+                            Intent intent = new Intent(getApplicationContext(), Admin_Panel.class);
+                            intent.putExtra("username", userEnteredUsername);
+                            intent.putExtra("type", type);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
                         }
                         else if(type=="AppUsers")
                         {
-//                            Intent intent = new Intent(getApplicationContext(), HomeUser.class);
-//                            intent.putExtra("username", userEnteredUsername);
-//                            intent.putExtra("type", type);
-//                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                            startActivity(intent);
+                            Intent intent = new Intent(getApplicationContext(), User_Panel.class);
+                            intent.putExtra("username", userEnteredUsername);
+                            intent.putExtra("type", type);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
                         }
                     }
                     else {
@@ -282,7 +283,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void forgetPassword(View view) {
-//        Intent intent=new Intent(getApplicationContext(),ForgetPassword.class);
-//        startActivity(intent);
+        Intent intent=new Intent(getApplicationContext(),ForgetPassword.class);
+        startActivity(intent);
     }
 }

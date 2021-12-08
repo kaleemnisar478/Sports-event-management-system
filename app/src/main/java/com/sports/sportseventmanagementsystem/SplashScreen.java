@@ -39,7 +39,7 @@ public class SplashScreen extends AppCompatActivity {
         top= AnimationUtils.loadAnimation(this,R.anim.splash_top_animation);
         bottom= AnimationUtils.loadAnimation(this,R.anim.splash_bottom_animation);
 
-        text=findViewById(R.id.ahang);
+        text=findViewById(R.id.sports);
         image=findViewById(R.id.splashLogo);
 
         text.setAnimation(bottom);
