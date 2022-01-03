@@ -1,10 +1,13 @@
 package com.sports.sportseventmanagementsystem.helperClasses;
 
+import java.util.List;
+
 public class Tournament {
     private String id;
     private String title;
     private String image;
     private String sportsName;
+    private List<String> teams;
     private String startDate;
     private String endDate;
     private String startTime;
@@ -14,11 +17,12 @@ public class Tournament {
     public Tournament() {
     }
 
-    public Tournament(String id, String title, String image, String sportsName, String startDate, String endDate, String startTime, String endTime, String details) {
+    public Tournament(String id, String title, String image, String sportsName, List<String> teams, String startDate, String endDate, String startTime, String endTime, String details) {
         this.id = id;
         this.title = title;
         this.image = image;
         this.sportsName = sportsName;
+        this.teams = teams;
         this.startDate = startDate;
         this.endDate = endDate;
         this.startTime = startTime;
@@ -56,6 +60,14 @@ public class Tournament {
 
     public void setSportsName(String sportsName) {
         this.sportsName = sportsName;
+    }
+
+    public List<String> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(List<String> teams) {
+        this.teams = teams;
     }
 
     public String getStartDate() {

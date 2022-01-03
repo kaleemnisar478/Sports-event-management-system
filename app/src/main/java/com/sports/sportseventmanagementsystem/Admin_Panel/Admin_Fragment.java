@@ -14,14 +14,16 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.sports.sportseventmanagementsystem.Admin_Panel.Add_Games.Add_Games;
+import com.sports.sportseventmanagementsystem.Admin_Panel.Add_Teams.ShowGames;
 import com.sports.sportseventmanagementsystem.Admin_Panel.CreateTournament.Tournament_Details;
+import com.sports.sportseventmanagementsystem.InProgress.InProgress;
 import com.sports.sportseventmanagementsystem.Login;
 import com.sports.sportseventmanagementsystem.R;
 
 public class Admin_Fragment extends Fragment {
 
 
-    private MaterialCardView createElection,inProgress,results,settings,addGames;
+    private MaterialCardView createElection,inProgress,results,settings,addGames,addTeams;
     private String id;
     private Bundle bundle;
     private DatabaseReference databaseReference;
@@ -45,6 +47,8 @@ public class Admin_Fragment extends Fragment {
 
         results=view.findViewById(R.id.results);
         addGames=view.findViewById(R.id.add_game);
+        inProgress=view.findViewById(R.id.in_progress);
+        addTeams=view.findViewById(R.id.add_teams);
         settings=view.findViewById(R.id.settings);
 
         createElection.setOnClickListener(new View.OnClickListener() {
@@ -63,16 +67,22 @@ public class Admin_Fragment extends Fragment {
         });
 
 
-//        results.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//         //       getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Results_Admin()).addToBackStack("Results").commit();
-//            }
-//        });
+        inProgress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new InProgress()).addToBackStack("In_Progress").commit();
+            }
+        });
         addGames.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Add_Games()).addToBackStack("Add Games").commit();
+            }
+        });
+        addTeams.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ShowGames()).addToBackStack("Add Games").commit();
             }
         });
 

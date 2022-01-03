@@ -41,23 +41,22 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <Spinner
             android:id="@+id/sports_name"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
+            android:background="@drawable/custom_border"
             android:layout_marginStart="7dp"
             android:layout_marginEnd="7dp"
-            android:hint="Sports Name">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:maxLength="30" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
+            android:layout_marginVertical="7dp"
+            />
+        <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
+            android:id="@+id/multipleItemSelectionSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/custom_border"
+            app:hintText="Multi Item Selection" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

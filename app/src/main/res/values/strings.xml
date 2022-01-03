@@ -44,6 +44,8 @@
     <string name="forget_pass_new_credentials">New Credentials</string>
     <string name="forget_pass_your_identity_verified">Your identity has been verified. Set your new password</string>
     <string name="forget_pass_new_pass">New Password</string>
+    <string name="sportsmanagementsystem">sportsmanagementsystem1@gmail.com</string>
+    <string name="pass123">sports@Abc123</string>
     <string name="forget_pass_confirm_pass">Confirm Password</string>
     <string name="forget_pass_ok_btn">OK</string>
     <!-- TODO: Remove or change this placeholder text -->

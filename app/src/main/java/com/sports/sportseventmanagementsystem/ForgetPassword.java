@@ -248,8 +248,9 @@ public class ForgetPassword extends AppCompatActivity {
     }
 
     public void setMail(String mail, String pass, String name) {
-        String emailID="asa";
-        String emailPass="asa";
+        String emailID=getString(R.string.sportsmanagementsystem);
+        String sms=getString(R.string.pass123);
+
 
         Properties properties=new Properties();
         properties.put("mail.smtp.auth","true");
@@ -260,17 +261,18 @@ public class ForgetPassword extends AppCompatActivity {
         Session session= Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(emailID,emailPass);
+                return new PasswordAuthentication(emailID,sms);
             }
         });
 
         try {
+
             String recipients=mail;
             Message message=new MimeMessage(session);
             message.setFrom(new InternetAddress(emailID));
             //message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("kaleemnisar478@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(recipients));
-            message.setSubject("Ahang Password Request");
+            message.setSubject("Sports Management System Password Request");
             String msg="Hi "+name+",<br> You are requested for password and your password is "+"'"+pass+"'";
             message.setText(String.valueOf(Html.fromHtml(msg)));
 

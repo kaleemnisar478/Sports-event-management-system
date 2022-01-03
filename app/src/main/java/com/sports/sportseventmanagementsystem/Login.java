@@ -61,11 +61,11 @@ public class Login extends AppCompatActivity {
         login_progressBar.setVisibility(View.INVISIBLE);
         String text="New User? <font color=#40E0D0>Sign Up</font>";
         signup.setText(Html.fromHtml(text));
-
+//       //todo
 //        login.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), HomeAdmin.class);
+//                Intent intent = new Intent(getApplicationContext(), Admin_Panel.class);
 //                intent.putExtra("username","kaleem");
 //                intent.putExtra("type", "AppUser");
 //                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
