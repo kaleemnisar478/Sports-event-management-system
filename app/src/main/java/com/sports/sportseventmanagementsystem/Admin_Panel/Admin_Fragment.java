@@ -19,11 +19,13 @@ import com.sports.sportseventmanagementsystem.Admin_Panel.CreateTournament.Tourn
 import com.sports.sportseventmanagementsystem.InProgress.InProgress;
 import com.sports.sportseventmanagementsystem.Login;
 import com.sports.sportseventmanagementsystem.R;
+import com.sports.sportseventmanagementsystem.Results.Results;
+import com.sports.sportseventmanagementsystem.Schedule.Scheduled;
 
 public class Admin_Fragment extends Fragment {
 
 
-    private MaterialCardView createElection,inProgress,results,settings,addGames,addTeams;
+    private MaterialCardView createTournament,inProgress,schedule,results,settings,addGames,addTeams;
     private String id;
     private Bundle bundle;
     private DatabaseReference databaseReference;
@@ -43,15 +45,17 @@ public class Admin_Fragment extends Fragment {
 
 
 
-        createElection=view.findViewById(R.id.create_tournament);
+        createTournament =view.findViewById(R.id.create_tournament);
 
         results=view.findViewById(R.id.results);
         addGames=view.findViewById(R.id.add_game);
         inProgress=view.findViewById(R.id.in_progress);
         addTeams=view.findViewById(R.id.add_teams);
         settings=view.findViewById(R.id.settings);
+        schedule=view.findViewById(R.id.schedule);
 
-        createElection.setOnClickListener(new View.OnClickListener() {
+
+        createTournament.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 databaseReference= FirebaseDatabase.getInstance().getReference("Elections");
@@ -73,6 +77,12 @@ public class Admin_Fragment extends Fragment {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new InProgress()).addToBackStack("In_Progress").commit();
             }
         });
+        schedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Scheduled()).addToBackStack("schedule").commit();
+            }
+        });
         addGames.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +93,12 @@ public class Admin_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ShowGames()).addToBackStack("Add Games").commit();
+            }
+        });
+        results.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Results()).addToBackStack("results").commit();
             }
         });
 

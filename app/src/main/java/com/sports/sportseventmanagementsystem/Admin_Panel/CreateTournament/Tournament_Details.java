@@ -487,7 +487,7 @@ public class Tournament_Details extends Fragment {
         String description = details.getEditText().getText().toString();
         final String ID = databaseReference.push().getKey();
 
-        detail = new Tournament(ID,titlename,"asm",spName,teams,startD,endD,startT,endT,description);
+        detail = new Tournament(ID,titlename,"asm",spName,teams,startD,endD,startT,endT,description,null);
 
         databaseReference.child(ID).setValue(detail);
 

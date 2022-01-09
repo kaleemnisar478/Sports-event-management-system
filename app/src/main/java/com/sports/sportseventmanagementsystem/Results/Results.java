@@ -1,4 +1,4 @@
-package com.sports.sportseventmanagementsystem.InProgress;
+package com.sports.sportseventmanagementsystem.Results;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -33,7 +33,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class InProgress extends Fragment {
+public class Results extends Fragment {
 
     private TextView noInProgress;
     private RecyclerView recyclerView;
@@ -43,7 +43,7 @@ public class InProgress extends Fragment {
 
     private ValueEventListener eventListener;
 
-    public InProgress() {
+    public Results() {
     }
 
 
@@ -51,9 +51,9 @@ public class InProgress extends Fragment {
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_in_progress, container, false);
+        View view= inflater.inflate(R.layout.fragment_result, container, false);
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
-        toolbar.setTitle("In Progress");
+        toolbar.setTitle("Results");
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +97,7 @@ public class InProgress extends Fragment {
                         long diffwithEnd = (int)( (endDateTime.getTime() - currentDateTime.getTime())
                                 / (1000 * 60 ) );
 
-                        if(diffwithStart<=0&&c.getWinner()==null)
+                        if(c.getWinner()!=null)
                         pendingList.add(c);
 
 
@@ -124,6 +124,8 @@ public class InProgress extends Fragment {
                 Bundle bundle=new Bundle();
                 bundle.putString("tournamentId",c.getId());
                 bundle.putString("tournamentName",c.getTitle());
+                bundle.putString("winner",c.getWinner());
+
                 TournamentDetails tournamentDetails=new TournamentDetails();
 
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, tournamentDetails).addToBackStack("tournamentDetails").commit();

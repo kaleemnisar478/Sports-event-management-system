@@ -13,11 +13,12 @@ public class Tournament {
     private String startTime;
     private String endTime;
     private String details;
+    private String winner;
 
     public Tournament() {
     }
 
-    public Tournament(String id, String title, String image, String sportsName, List<String> teams, String startDate, String endDate, String startTime, String endTime, String details) {
+    public Tournament(String id, String title, String image, String sportsName, List<String> teams, String startDate, String endDate, String startTime, String endTime, String details, String winner) {
         this.id = id;
         this.title = title;
         this.image = image;
@@ -28,6 +29,7 @@ public class Tournament {
         this.startTime = startTime;
         this.endTime = endTime;
         this.details = details;
+        this.winner = winner;
     }
 
     public String getId() {
@@ -108,5 +110,13 @@ public class Tournament {
 
     public void setDetails(String details) {
         this.details = details;
+    }
+
+    public String getWinner() {
+        return winner;
+    }
+
+    public void setWinner(String winner) {
+        this.winner = winner;
     }
 }

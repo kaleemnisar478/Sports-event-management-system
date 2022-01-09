@@ -11,8 +11,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.card.MaterialCardView;
+import com.sports.sportseventmanagementsystem.InProgress.InProgress;
 import com.sports.sportseventmanagementsystem.Login;
 import com.sports.sportseventmanagementsystem.R;
+import com.sports.sportseventmanagementsystem.Results.Results;
+import com.sports.sportseventmanagementsystem.Schedule.Scheduled;
 
 public class User_Panel_Fragment extends Fragment {
 
@@ -44,23 +47,14 @@ public class User_Panel_Fragment extends Fragment {
         inProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                bundle=new Bundle();
-                bundle.putString("user",user);
-//                InProgress_Voter inProgress_voter= new InProgress_Voter();
-//                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, inProgress_voter).addToBackStack("In Progress").commit();
-//                inProgress_voter.setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new InProgress()).addToBackStack("In_Progress").commit();
             }
         });
 
         schedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bundle=new Bundle();
-                bundle.putString("user",user);
-//                schedule_Voter schedule_voter= new schedule_Voter();
-//                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, schedule_voter).addToBackStack("schedule").commit();
-//                schedule_voter.setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Scheduled()).addToBackStack("schedule").commit();
             }
         });
 
@@ -68,7 +62,7 @@ public class User_Panel_Fragment extends Fragment {
         results.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Results_Voter()).addToBackStack("Results").commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Results()).addToBackStack("results").commit();
             }
         });
 
