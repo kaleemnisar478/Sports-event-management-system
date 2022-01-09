@@ -20,7 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.sports.sportseventmanagementsystem.R;
-import com.sports.sportseventmanagementsystem.User_Panel.tournament_details.TournamentDetails;
+import com.sports.sportseventmanagementsystem.Admin_Panel.tournament_details.TournamentDetails;
 import com.sports.sportseventmanagementsystem.helperClasses.RecyclerTouchListener;
 import com.sports.sportseventmanagementsystem.helperClasses.Tournament;
 import com.sports.sportseventmanagementsystem.helperClasses.TournementAdapter;

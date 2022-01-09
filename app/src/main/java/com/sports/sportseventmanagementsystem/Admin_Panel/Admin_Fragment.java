@@ -58,15 +58,7 @@ public class Admin_Fragment extends Fragment {
         createTournament.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseReference= FirebaseDatabase.getInstance().getReference("Elections");
-                id = databaseReference.push().getKey();
-                bundle=new Bundle();
-                bundle.putString("electionID",id);
-                Tournament_Details createElection=new Tournament_Details();
-
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, createElection).addToBackStack("CreateElection").commit();
-                createElection.setArguments(bundle);
-
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Tournament_Details()).addToBackStack("CreateElection").commit();
             }
         });
 
