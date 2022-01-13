@@ -10,6 +10,7 @@ public class User implements Serializable {
     private String phoneNo;
     private String password;
     private String profileImage;
+    private int status;
 
     public User() {
         fullname="";
@@ -17,15 +18,18 @@ public class User implements Serializable {
         email="";
         phoneNo="";
         password="";
+        status=1;
     }
 
-    public User(String fullname, String username, String email, String countryCode, String phoneNo, String password) {
+    public User(String fullname, String username, String email, String countryCode, String phoneNo, String password, String profileImage, int status) {
         this.fullname = fullname;
         this.username = username;
         this.email = email;
         this.countryCode = countryCode;
         this.phoneNo = phoneNo;
         this.password = password;
+        this.profileImage = profileImage;
+        this.status = status;
     }
 
     public String getFullname() {
@@ -82,5 +86,13 @@ public class User implements Serializable {
 
     public void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

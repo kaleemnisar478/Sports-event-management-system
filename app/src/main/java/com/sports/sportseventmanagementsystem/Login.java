@@ -61,17 +61,6 @@ public class Login extends AppCompatActivity {
         login_progressBar.setVisibility(View.INVISIBLE);
         String text="New User? <font color=#40E0D0>Sign Up</font>";
         signup.setText(Html.fromHtml(text));
-//       //todo
-//        login.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), User_Panel.class);
-//                intent.putExtra("username","kaleem");
-//                intent.putExtra("type", "AppUser");
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                startActivity(intent);
-//            }
-//        });
         username.getEditText().setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -240,6 +229,9 @@ public class Login extends AppCompatActivity {
                     username.setErrorEnabled(false);
 
                     String passFromDb=dataSnapshot.child(userEnteredUsername).child("password").getValue(String.class);
+                    int status=dataSnapshot.child(userEnteredUsername).child("status").getValue(int.class);
+                    if(status==1)
+                    {
                     if(passFromDb.equals(userEnteredPassword)){
 
                         password.setErrorEnabled(false);
@@ -260,8 +252,15 @@ public class Login extends AppCompatActivity {
                         }
                     }
                     else {
+                        login_progressBar.setVisibility(View.INVISIBLE);
                         password.setError("Wrong Password...");
                         password.requestFocus();
+                    }
+                }
+                    else
+                    {
+                        login_progressBar.setVisibility(View.INVISIBLE);
+                        Toast.makeText(getApplicationContext(),"Your account is not approved. Contact admin.",Toast.LENGTH_LONG).show();
                     }
                 }
                 else {

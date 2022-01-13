@@ -1,6 +1,7 @@
 package com.sports.sportseventmanagementsystem;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
@@ -25,6 +26,17 @@ import com.google.firebase.database.ValueEventListener;
 import com.hbb20.CountryCodePicker;
 import com.sports.sportseventmanagementsystem.helperClasses.User;
 
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 public class SignUp extends AppCompatActivity {
     private TextInputLayout fullname,username,phone,email,password,dob;
     private CountryCodePicker ccp;
@@ -34,7 +46,7 @@ public class SignUp extends AppCompatActivity {
     private String name,u_name,mail,selected_country_code,number;
     private String type;
     private RadioGroup radioGroup;
-
+    private int userType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -401,7 +413,7 @@ public class SignUp extends AppCompatActivity {
 
             return;
         }
-        int userType=radioGroup.getCheckedRadioButtonId();
+        userType=radioGroup.getCheckedRadioButtonId();
 
         type="";
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
@@ -465,9 +477,11 @@ public class SignUp extends AppCompatActivity {
 
 
 
-                    User user=new User(name,u_name,mail,selected_country_code,number,pass);
+                    User user=new User(name,u_name,mail,selected_country_code,number,pass," ",userType==R.id.user?1:0);
                     reference.child(user.getUsername()).setValue(user);
-
+                    if(userType==R.id.admin) {
+                        setMail(user.getFullname());
+                    }
                     Toast.makeText(getApplicationContext(),"You are successfully registered. Signin to continue!",Toast.LENGTH_LONG).show();
                     Intent intent=new Intent(getApplicationContext(), Login.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -490,6 +504,92 @@ public class SignUp extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
 
+    }
+
+    public void setMail(String name) {
+        String emailID=getString(R.string.sportsmanagementsystem);
+        String sms=getString(R.string.pass123);
+
+
+        Properties properties=new Properties();
+        properties.put("mail.smtp.auth","true");
+        properties.put("mail.smtp.starttls.enable","true");
+        properties.put("mail.smtp.host","smtp.gmail.com");
+        properties.put("mail.smtp.port","587");
+
+        Session session= Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(emailID,sms);
+            }
+        });
+
+        try {
+
+            String recipients="mubashirraza151@gmail.com";
+            Message message=new MimeMessage(session);
+            message.setFrom(new InternetAddress(emailID));
+            //message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("kaleemnisar478@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(recipients));
+            message.setSubject("Sports Management System Password Request");
+            String msg="Hi Admin,<br> "+name+" is requested for admin approval kindly check database for more details";
+            message.setText(String.valueOf(Html.fromHtml(msg)));
+
+            new SendMail().execute(message);
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+
+    private class SendMail extends AsyncTask<Message,String,String> {
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //  progressDialog=ProgressDialog.show(getContext(),"Please Wait","Sending Mail...",true,false);
+        }
+
+        @Override
+        protected String doInBackground(Message... messages) {
+            try {
+                Transport.send(messages[0]);
+                return "Success";
+            } catch (MessagingException e) {
+                e.printStackTrace();
+                return "Error";
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            //progressDialog.dismiss();
+//            if(s.equals("Success"))
+//            {
+////                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getContext());
+////                builder.setCancelable(false);
+////                builder.setTitle("Success");
+////                builder.setMessage("Mail sent successfully");
+////                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+////                    @Override
+////                    public void onClick(DialogInterface dialog, int which) {
+////                        dialog.dismiss();
+////                    }
+////                });
+////                builder.show();
+//                Toast.makeText(getActivity(),"Mail sent",Toast.LENGTH_SHORT).show();
+//
+//            }
+//            else {
+//                Toast.makeText(getActivity(),"Something went wrong... in sending mail",Toast.LENGTH_SHORT).show();
+//            }
+        }
     }
 
 
